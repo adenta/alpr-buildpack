@@ -20,13 +20,13 @@ cd build
 
 # setup the compile environment
 echo "------------> setup compile env"
-cmake -DCMAKE_INSTALL_PREFIX:PATH=/app/.apt/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/app/.apt/usr/etc ..
+#cmake -DCMAKE_INSTALL_PREFIX:PATH=/app/.apt/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/app/.apt/usr/etc ..
 
 # compile the library
 echo "------------> compile lib"
-make
+#make
 
 # Install the binaries/libraries to your local system (prefix is /usr)
 echo "------------> install binaries"
-sudo make install
+#sudo make install
 
