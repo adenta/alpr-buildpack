@@ -1,4 +1,32 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-echo "-----> Nothing to do."
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+echo "-----> Installing ALPR"
+
+cd $BUILD_DIR
+
+echo "-----> \tcloning repo..."
+
+git clone https://github.com/openalpr/openalpr.git
+
+# Setup the build directory
+echo "-----> \tsetting up build dir..."
+cd openalpr/src
+mkdir build
+cd build
+
+# setup the compile environment
+echo "-----> \tsetup compile env"
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc ..
+
+# compile the library
+echo "-----> \tcompile lib"
+make
+
+# Install the binaries/libraries to your local system (prefix is /usr)
+echo "-----> \tinstall binaries"
+sudo make install
+
