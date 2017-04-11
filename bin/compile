@@ -8,25 +8,25 @@ echo "-----> Installing ALPR"
 
 cd $BUILD_DIR
 
-echo "-----> \tcloning repo..."
+echo "------------> cloning repo..."
 
 git clone https://github.com/openalpr/openalpr.git
 
 # Setup the build directory
-echo "-----> \tsetting up build dir..."
+echo "------------> setting up build dir..."
 cd openalpr/src
 mkdir build
 cd build
 
 # setup the compile environment
-echo "-----> \tsetup compile env"
-cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc ..
+echo "------------> setup compile env"
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/app/.apt/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/app/.apt/usr/etc ..
 
 # compile the library
-echo "-----> \tcompile lib"
+echo "------------> compile lib"
 make
 
 # Install the binaries/libraries to your local system (prefix is /usr)
-echo "-----> \tinstall binaries"
+echo "------------> install binaries"
 sudo make install
 
